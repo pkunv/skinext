@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 
+import { Toaster } from "@/app/_components/ui/sonner";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -27,6 +29,7 @@ export default function RootLayout({
           <main className="container flex min-h-screen flex-col items-center justify-center gap-6">
             {children}
           </main>
+          <Toaster />
         </TRPCReactProvider>
       </body>
     </html>

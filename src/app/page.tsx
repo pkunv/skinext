@@ -5,14 +5,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/_components/ui/card";
+import { Heading1 } from "@/app/_components/ui/headings";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 export default async function Home() {
   return (
     <>
-      <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-        skiNEXT
-      </h1>
+      <Heading1>skiNEXT</Heading1>
       <Card>
         <CardHeader>
           <CardTitle>Start playing!</CardTitle>
