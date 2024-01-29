@@ -15,6 +15,7 @@ export const userRouter = createTRPCRouter({
   upsert: publicProcedure
     .input(z.object({ username: z.string() }))
     .mutation(async ({ ctx, input }) => {
+      // TODO: implement ctx.session.user
       const { getUser } = getKindeServerSession();
       const user = await getUser();
       if (!user) throw new TRPCError({ code: "UNAUTHORIZED" });

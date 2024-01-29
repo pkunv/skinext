@@ -34,6 +34,7 @@ export default function UsernameForm() {
   const upsertUser = api.user.upsert.useMutation({
     onSuccess: () => {
       router.push("/game");
+      toast.success("Successfully created your account! You can play now.");
     },
     onError: (error) => {
       toast.error(error.message);

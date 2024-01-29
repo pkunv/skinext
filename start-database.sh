@@ -22,9 +22,9 @@ if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   exit 0
 fi
 
-# import env variables from .env.local
+# import env variables from .env
 set -a
-source .env.local
+source .env
 
 DB_PASSWORD=$(echo $DATABASE_URL | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
 
@@ -36,7 +36,7 @@ if [ "$DB_PASSWORD" = "password" ]; then
     exit 1
   fi
   DB_PASSWORD=$(openssl rand -base64 12)
-  sed -i -e "s/:password@/:$DB_PASSWORD@/" .env.local
+  sed -i -e "s/:password@/:$DB_PASSWORD@/" .env
 fi
 
 docker run --name $DB_CONTAINER_NAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=skinext -d -p 5432:5432 docker.io/postgres
